@@ -1,0 +1,64 @@
+.userCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 2px solid rgba(83, 83, 83, 0.747);
+  border-radius: 30px;
+  background-color: #778899;
+  position: relative;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar {
+  width: 350px;
+  border: 1px solid black;
+  border-radius: 50%;
+  background-color: rgb(58, 58, 56);
+  margin-top: 16px;
+  padding-top: 15px;
+}
+
+.direction {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+
+.name {
+  color: black;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.text {
+  color: #514f4f;
+  margin-top: 0;
+}
+
+.stats {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.trascription {
+  color: black;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0px;
+}
