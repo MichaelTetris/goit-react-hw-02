@@ -1,14 +1,9 @@
-
-
-
-const Options = ({incrementClick}) => {
-  
-  
+const Options = ({ incrementClick }) => {
   return (
     <div>
-      <button onClick={() => incrementClick('good')}>Good</button>
-      <button onClick={() => incrementClick('neutral')}>Neutral</button>
-      <button onClick={() => incrementClick('bad')}> Bad</button>
+      <button onClick={() => incrementClick("good")}>Good</button>
+      <button onClick={() => incrementClick("neutral")}>Neutral</button>
+      <button onClick={() => incrementClick("bad")}>Bad</button>
       {/* <button>Reset</button> */}
     </div>
   );

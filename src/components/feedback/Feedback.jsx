@@ -15,7 +15,7 @@ const Feedback = (props) => {
     <div>
       <p>Good: {props.click.good}</p>
       <p>Neutral: {props.click.neutral}</p>
-      <p>Bad: {props.click.neutral}</p>
+      <p>Bad: {props.click.bad}</p>
     </div>
   );
 };
