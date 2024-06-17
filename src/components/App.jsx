@@ -22,7 +22,7 @@ const App = () => {
       setClicks(JSON.parse(storedClicks));
       setHasData(true);
     }
-  }, []);
+  }, [clicks]);
 
   /* const incrementClick = (type) => {
     setClicks((prevClick) => {
