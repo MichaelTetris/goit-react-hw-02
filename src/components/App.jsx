@@ -5,6 +5,8 @@ import Feedback from "./feedback/Feedback";
 import Notification from "./notification/Notification";
 import Options from "./options/Options";
 
+import css from './app.module.css'
+
 import { useState, useEffect } from "react";
 
 const App = () => {
@@ -42,7 +44,7 @@ const App = () => {
   };
 
   return (
-    <>
+    < div className ={css.container}>
       <Description />
       <Options
         updateClicks={updateClicks}
@@ -52,7 +54,7 @@ const App = () => {
       />
       {totalFeedback !== 0 && <Feedback click={clicks}  count ={totalFeedback} procent ={positiveFeedback} />}
       {totalFeedback === 0 && <Notification />}
-    </>
+    </div>
   );
 };
 
