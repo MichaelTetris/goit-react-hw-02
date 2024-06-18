@@ -16,24 +16,19 @@ const App = () => {
 
   const [hasData, setHasData] = useState(false);
 
+  const totalFeedback = clicks.good + clicks.neutral + clicks.bad;
+  const positiveFeedback = Math.round((clicks.good / totalFeedback) * 100);
+  
+  
   useEffect(() => {
     const storedClicks = localStorage.getItem("clicks");
     if (storedClicks) {
       setClicks(JSON.parse(storedClicks));
       setHasData(true);
     }
-  }, [clicks]);
+  }, []);
 
-  /* const incrementClick = (type) => {
-    setClicks((prevClick) => {
-      return {
-        ...prevClick,
-        [type]: prevClick[type] + 1,
-      };
-    });
-    localStorage.setItem("clicks", JSON.stringify(incrementClick));
-  }; */
-
+  
   const updateClicks = (type) => {
     const newClicks = { ...clicks, [type]: clicks[type] + 1 };
     setClicks(newClicks);
@@ -53,13 +48,13 @@ const App = () => {
         updateClicks={updateClicks}
         click={clicks}
         onReset={resetClicks}
-        hasData={hasData}
+        hasData={totalFeedback}
       />
-      <Feedback click={clicks} />
-      <Notification />
+      {totalFeedback !== 0 && <Feedback click={clicks}  count ={totalFeedback} procent ={positiveFeedback} />}
+      {totalFeedback === 0 && <Notification />}
     </>
   );
 };
-/* localStorage.removeItem("clicks"); */
+
 
 export default App;
