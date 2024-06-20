@@ -1,14 +1,14 @@
 /* import App from "../App"; */
 
 
-const Feedback = (props) => {
+const Feedback = ({click, count, percent}) => {
   return (
     <div>
-      <p>Good: {props.click.good}</p>
-      <p>Neutral: {props.click.neutral}</p>
-      <p>Bad: {props.click.bad}</p>
-      <p>Total: {props.count}</p>
-      {props.procent > 0 ? <p>Positive: {props.procent} %</p> : <p>Positive: 0 %</p>}
+      <p>Good: {click.good}</p>
+      <p>Neutral: {click.neutral}</p>
+      <p>Bad: {click.bad}</p>
+      <p>Total: {count}</p>
+      <p>Positive: {percent} %</p> 
     </div>
   );
 };

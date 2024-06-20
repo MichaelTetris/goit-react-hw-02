@@ -5,7 +5,7 @@ import Feedback from "./feedback/Feedback";
 import Notification from "./notification/Notification";
 import Options from "./options/Options";
 
-import css from './app.module.css'
+import css from "./app.module.css";
 
 import { useState, useEffect } from "react";
 
@@ -16,35 +16,36 @@ const App = () => {
     bad: 0,
   });
 
-  const [hasData, setHasData] = useState(false);
-
   const totalFeedback = clicks.good + clicks.neutral + clicks.bad;
-  const positiveFeedback = Math.round((clicks.good / totalFeedback) * 100);
-  
-  
+  const positiveFeedback =
+    totalFeedback > 0 ? Math.round((clicks.good / totalFeedback) * 100) : 0;
+
   useEffect(() => {
     const storedClicks = localStorage.getItem("clicks");
     if (storedClicks) {
       setClicks(JSON.parse(storedClicks));
-      setHasData(true);
     }
   }, []);
 
-  
+  useEffect(() => {
+    if (totalFeedback === 0) {
+      localStorage.removeItem("clicks");
+    } else {
+      localStorage.setItem("clicks", JSON.stringify(clicks));
+    }
+  }, [clicks]);
+
   const updateClicks = (type) => {
     const newClicks = { ...clicks, [type]: clicks[type] + 1 };
     setClicks(newClicks);
-    localStorage.setItem("clicks", JSON.stringify(newClicks));
   };
 
   const resetClicks = () => {
     setClicks({ good: 0, neutral: 0, bad: 0 });
-    localStorage.removeItem("clicks");
-    setHasData(false);
   };
 
   return (
-    < div className ={css.container}>
+    <div className={css.container}>
       <Description />
       <Options
         updateClicks={updateClicks}
@@ -52,11 +53,17 @@ const App = () => {
         onReset={resetClicks}
         hasData={totalFeedback}
       />
-      {totalFeedback !== 0 && <Feedback click={clicks}  count ={totalFeedback} procent ={positiveFeedback} />}
-      {totalFeedback === 0 && <Notification />}
+      {totalFeedback !== 0 ? (
+        <Feedback
+          click={clicks}
+          count={totalFeedback}
+          percent={positiveFeedback}
+        />
+      ) : (
+        <Notification />
+      )}
     </div>
   );
 };
-
 
 export default App;
